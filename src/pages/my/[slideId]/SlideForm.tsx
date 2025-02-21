@@ -37,9 +37,7 @@ const SlideForm = ({ onCancel, payload }: Props) => {
             item === "white"
               ? "bg-white active:opacity-50 hover:opacity-70"
               : "bg-zinc-600 hover:opacity-80 active:opacity-60"
-          } rounded-full mt-2.5 ${
-            selected ? "border-blue-300" : "border-gray-300"
-          }`}
+          } rounded-full mt-2.5 ${selected ? "border-blue-300" : "border-gray-300"}`}
           type="button"
         />
       )
@@ -59,9 +57,7 @@ const SlideForm = ({ onCancel, payload }: Props) => {
           onClick={onClick}
           className={`border h-5  cursor-pointer w-5 bg-${item}-600
             hover:opacity-80 active:opacity-60
-          rounded-full mt-2.5 ${
-            selected ? "border-blue-300" : "border-gray-300"
-          }`}
+          rounded-full mt-2.5 ${selected ? "border-blue-300" : "border-gray-300"}`}
           type="button"
         />
       )
@@ -83,12 +79,10 @@ const SlideForm = ({ onCancel, payload }: Props) => {
     if (titleMessage) {
       return alert(titleMessage, [{ onPress: Title.focus }])
     }
-    slideHandler(payload ? "UPDATE" : "CREATE", slide, (newSlide) =>
-      navi(`/my/${newSlide.uid}`)
-    )
+    slideHandler(payload ? "UPDATE" : "CREATE", slide, (newSlide) => navi(`/my/${newSlide.uid}`))
   }, [slide, titleMessage, alert, Title, slideHandler, navi])
   return (
-    <AppForm className="w-100 mx-auto my-5 gap-y-2.5" onSubmit={onSubmit}>
+    <AppForm className="w-100 mx-auto my-5 gap-y-2.5 px-5" onSubmit={onSubmit}>
       <Title.Component
         onChangeText={(title) => setSlide((prev) => ({ ...prev, title }))}
         value={slide.title}
@@ -117,15 +111,7 @@ const SlideForm = ({ onCancel, payload }: Props) => {
           <Color.Component
             columnGap={5}
             Option={ColorOption}
-            data={
-              [
-                "blue",
-                "orange",
-                "red",
-                "cyan",
-                "violet",
-              ] as SimplySlideThemeColor[]
-            }
+            data={["blue", "orange", "red", "cyan", "violet"] as SimplySlideThemeColor[]}
             title="색상"
             horizontal
             Placeholder={({ handler }) => (
@@ -139,9 +125,7 @@ const SlideForm = ({ onCancel, payload }: Props) => {
         </div>
       </div>
       <div className="flex gap-x-2.5 mt-2.5">
-        <Button.Submit className="flex-2">
-          {payload ? "수정하기" : "생성하기"}
-        </Button.Submit>
+        <Button.Submit className="flex-2">{payload ? "수정하기" : "생성하기"}</Button.Submit>
         <Button.Simple className="flex-1">취소</Button.Simple>
       </div>
     </AppForm>

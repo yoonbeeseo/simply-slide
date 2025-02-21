@@ -1,7 +1,9 @@
+import ProjectHeader from "./ProjectHeader"
+
 const SlideProject = (slide: SimplySlide) => {
   return (
-    <div>
-      <h1>{slide.title}</h1>
+    <div className="p-5">
+      <ProjectHeader {...slide} />
     </div>
   )
 }

@@ -24,3 +24,8 @@
   cursor: pointer;
   background-color: rgb(180, 180, 180);
 }
+
+button,
+a {
+  cursor: pointer;
+}

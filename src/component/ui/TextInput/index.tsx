@@ -19,10 +19,7 @@ const TextInput = () => {
 export default TextInput
 
 export interface InputProps {
-  props?: React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  >
+  props?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
   title?: string
   placeholder?: string
   id?: string
@@ -33,18 +30,7 @@ export interface InputProps {
   ref?: React.Ref<HTMLInputElement>
   value?: string | number
 }
-export function Input({
-  id,
-  name,
-  placeholder,
-  props,
-  title,
-  type,
-  className,
-  ref,
-  onChangeText,
-  value,
-}: InputProps) {
+export function Input({ id, name, placeholder, props, title, type, className, ref, onChangeText, value }: InputProps) {
   const randomId = useId()
   const inputId = useMemo(() => id ?? randomId, [id, randomId])
   const onChange = useCallback(
@@ -58,6 +44,8 @@ export function Input({
     },
     [onChangeText]
   )
+
+  const st = "border rounded border-gray-200 h-12 px-3 bg-gray-50 outline-none focus:border-blue-600 "
   return (
     <div className="flex flex-col gap-y-1">
       {title && (
@@ -75,11 +63,7 @@ export function Input({
         placeholder={props?.placeholder ?? placeholder}
         value={props?.value ?? value}
         onChange={props?.onChange ?? onChange}
-        className={
-          props?.className ??
-          className ??
-          "border rounded border-gray-200 h-12 px-3 bg-gray-50 outline-none focus:border-blue-600"
-        }
+        className={props?.className ? props.className : className ? st.concat(className) : st}
       />
     </div>
   )
